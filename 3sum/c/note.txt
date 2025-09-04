@@ -1,0 +1,42 @@
+# LeetCodeのC言語問題の固有テンプレートについて
+
+# たとえば 「3Sum」
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
+
+/*
+この returnSize と returnColumnSizes について説明がないので、調べたものを補足。
+関数の返り値として int** など二重ポインタ、または二次元配列を求められている場合、
+「二次元配列の要素数(returnSize)」と共に、
+「要素となる各配列の長さを記録した１次元配列のポインタ(returnColumnSizes)」を返さなくてはならない、
+…ことになっている。（英語ちゃんと読めばそこまで解釈できるのだろうが、いかんせんこの分野の英語は不慣れ。）
+
+なので例えば
+Ａ：{{1,2},{1,3,3},{0,2}}
+なんていう配列を返したい場合は、配列長の３と共に、各要素配列の長さを示した１次元配列
+Ｂ：{2,3,2}
+のポインタを返さなくてはならない、ということなのである。
+さらに、配列Ｂに関してはmallocでヒープに保存する必要がある。
+
+テスト側はポインタとその配列を利用して、解答の配列の要素を取得するわけだ。
+*/
+
+#連結リストのfreeの方法
+
+for(int i=0; i<HASH_KEY ;i++)
+{
+    hnode *current = &htable[i];
+    while(current){
+        hnode *next = current->next;
+        free(current);
+        current = next;
+    }
+}
+
+/*
+nextを退避(シャローコピー)しながら現在のノードをfree。これを末尾まで行う
+*/
