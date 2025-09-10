@@ -1,6 +1,6 @@
 /*
 hashtableを使って作成したtripletをlookupする方法にしたが、TLE。
-結局敗北宣言してAIに聞いたら、q_sort & teo-pointerが正解らしいのでそれを実装します。
+結局敗北宣言してAIに聞いたら、q_sort & tow-pointerが正解らしいのでそれを実装します。
 
 two-pointerは三重ループでやっていたことを二分探索してtriplet候補を探すことで
 見つけているようです
