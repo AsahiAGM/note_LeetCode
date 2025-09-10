@@ -4,7 +4,7 @@
 
 /*
     TLE突破して提出できたコード。しかし、RT:93msで中央値と比較してもかなり遅かった。
-    
+
 */
 void print_arr(int *arr, int size);
 
@@ -61,7 +61,7 @@ int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes
 
    // init
 	printf("--init--\n");
-    result = (int **)malloc(sizeof(int *) * 3000);
+    result = (int **)malloc(sizeof(int *) * (numsSize * 6));
     my_qsort(nums, 0, numsSize - 1);
 	printf("\nsort end:\n");
 	print_arr(nums, numsSize);
@@ -77,11 +77,9 @@ int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes
    prei = INT_MIN;
    while(i < numsSize - 2)
    {
-        if (nums[i] == prei)
-        {
+        while (nums[i] == prei)
             i++;
-            continue;
-        }
+
         // two-pointer
         left = i + 1;
         right = numsSize - 1;
@@ -96,25 +94,25 @@ int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes
 
                 int prel = nums[left];
                 while (left < right && prel == nums[left])
-                    prel = nums[left++];
+                    left++;
 
                 int prer = nums[right];
                 while (left < right && prer == nums[right])
-                    prer = nums[right--];
+                    right--;
                 printf(" --> make triplet\n");
             }
             else if(sum < 0)
             {
                 int prel = nums[left];
                 while (left < right && prel == nums[left])
-                    prel = nums[left++];
+                    left++;
                 printf("\n");
             }
             else
             {
                 int prer = nums[right];
                 while (left < right && prer == nums[right])
-                    prer = nums[right--];
+                    right--;
                 printf("\n");
             }
         }
