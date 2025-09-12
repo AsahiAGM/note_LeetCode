@@ -4,6 +4,9 @@
 #include <limits.h>
 #include <math.h>
 
+/*
+3つの数字の和がINT_MAXを越える場合を想定して、minDist、sumおよびdistの型はlongにすること
+*/
 int __cpr_assend(const void *a, const void *b)
 {
     int Inta = *(int *) a;
