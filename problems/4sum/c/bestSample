@@ -1,0 +1,72 @@
+int comb(const void* a, const void* b) { return *((int*)a) - *((int*)b); }
+
+int addResult(int** arr, int a, int b, int c, int d, int idx) {
+    int* quator = (int*)malloc(4 * sizeof(int));
+    quator[0] = a;
+    quator[1] = b;
+    quator[2] = c;
+    quator[3] = d;
+    arr[idx++] = quator;
+    return idx;
+}
+
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume
+ * caller calls free().
+ */
+int** fourSum(int* nums, int numsSize, int target, int* returnSize,
+              int** returnColumnSizes) {
+    qsort(nums, numsSize, sizeof(int), comb);
+    int capacity = 1;
+    int** res = (int**)malloc(capacity * sizeof(int *));
+    *returnSize = 0;
+
+    for (int i = 0; i < numsSize - 3; i++) {
+        if (i > 0 && nums[i] == nums[i - 1]) { continue; }
+        long min = (long)nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3];
+        if (min > target) break;
+        long max = (long)nums[i] + nums[numsSize - 3] + nums[numsSize - 2] + nums[numsSize - 1];
+        if (max < target) continue;
+
+        for (int j = i + 1; j < numsSize - 2; j++) {
+            if (j > i + 1 && nums[j] == nums[j - 1]) { continue; }
+            min = (long)nums[i] + nums[j] + nums[j + 1] + nums[j + 2];
+            if (min > target) break;
+            max = (long)nums[i] + nums[j] + nums[numsSize - 2] + nums[numsSize - 1];
+            if (max < target) continue;
+
+            int leftPivot = nums[i];
+            int rightPivot = nums[j];
+            int* left = &(nums[j]) + 1;
+            int* right = &nums[numsSize - 1];
+            while (left < right) {
+                long count = (long)leftPivot + *left + *right + rightPivot;
+                if (count == target) {
+                    if ((*returnSize + 1) > capacity) {
+                        capacity *= 2;
+                        res = realloc(res, capacity * sizeof(int *));
+                    }
+                    *(returnSize) = addResult(res, leftPivot, rightPivot, *left, *right, *returnSize);
+                    left++;
+                    while (left < right && *(left - 1) == *left) { left++; }
+                    // right--;
+                    // while (left < right && *(right + 1) == *right) { right--; }
+                } else if (count < target) {
+                    left++;
+                    // while (left < right && *(left - 1) == *left) { left++; }
+                } else {
+                    right--;
+                    // while (left < right && *(right + 1) == *right) { right--; }
+                }
+            }
+        }
+    }
+    int* col = (int*)malloc(*(returnSize) * sizeof(int));
+    for (int i = 0; i < *(returnSize); i++) {
+        col[i] = 4;
+    }
+    *returnColumnSizes = col;
+    return res;
+}

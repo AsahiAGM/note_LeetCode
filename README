@@ -2,7 +2,7 @@
 
 solotion && debug
 cd ~/lc_study 
--> fsolution [probnlem] [lang] [script]
+-> fsolution [problem] [lang] [script]
 or setlang [lang] [script]
 -> make all [lang] [problem] [script]
 or make re [lang] [problem] [script]

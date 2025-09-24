@@ -1,13 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_arr(const char *arr, int size)
+void print_str(const char *arr, int size)
 {
     printf("[");
     for(int i=0; i<size ;i++){
         if(i != 0)
             printf(",");
         printf("%c",arr[i]);
+    }
+    printf("]\n");
+}
+
+void print_nums(const int *arr, int size)
+{
+    printf("[");
+    for(int i=0; i<size ;i++){
+        if(i != 0)
+            printf(",");
+        printf("%d",arr[i]);
     }
     printf("]\n");
 }
