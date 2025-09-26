@@ -1,0 +1,7 @@
+help fsolution
+--syntax--
+fsolution [problems name] [lang] [function name]
+--param--
+:problems name -- that is name you going to study leetcode problem
+:lang          -- that is language you going to use language for solution
+:function name -- default function name in leetcode problem
