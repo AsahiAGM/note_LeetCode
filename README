@@ -1,8 +1,0 @@
-# study note for LeetCode
-
-solotion && debug
-cd ~/lc_study 
--> fsolution [problem] [lang] [script]
-or setlang [lang] [script]
--> make all [lang] [problem] [script]
-or make re [lang] [problem] [script]

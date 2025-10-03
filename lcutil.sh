@@ -28,4 +28,23 @@ fsolution()
     solution "$1"
     setlang "$2" "$3"
     cd ../../..
+    echo "let's start!! enjoy!! :)"
+    code -r problems/$1/$2/$3.$2
+    code -r problems/$1/$2/main.$2
+}
+lcbuild()
+{
+    if [[ $1 == "-h" || $1 == "--help" ]]; then
+        cat .man_util/lcbuild.txt
+        return 0
+    fi
+    if [[ $# -ne 3 ]]; then
+        echo "syntax ERROR. please read this command help --> lcbuild -h or --help"
+        return 1
+    fi
+
+    probname="$1"
+    lang="$2"
+    funcname="$3"
+    make re $lang $probname "$funcname.c"
 }

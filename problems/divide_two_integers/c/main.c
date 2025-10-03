@@ -10,5 +10,5 @@ int main(void)
     printf("%d -> %d\n", 10, divide(10,-3));
     printf("%d -> %d\n", INT_MAX, divide(INT_MAX,100));
     printf("%d -> %d\n", INT_MIN, divide(INT_MIN,-1));
-    printf("\n");
+    printf("\n");    
 }

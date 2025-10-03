@@ -1,7 +1,12 @@
 {
     "files.associations": {
-        "stdio.h": "c",
-        "limits": "c",
-        "__putarr": "cpp"
-    },        
+		"stdio.h": "c",
+		"limits": "c",
+		"__putarr": "cpp",
+		"random": "c",
+		"util.h": "c"
+	},
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
 }
